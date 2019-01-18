@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  ordinahelloworldcore:
+    image: ordinahelloworldcore
+    build:
+      context: .
+      dockerfile: OrdinaHelloWorldCore\Dockerfile
