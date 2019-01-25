@@ -1,0 +1,42 @@
+resources:
+- repo: self
+
+queue:
+  name: Hosted Windows Container
+
+steps:
+- task: DockerCompose@0
+
+  displayName: 'Build services'
+
+  inputs:
+    containerregistrytype: 'Container Registry'
+
+    dockerRegistryEndpoint: ordinadockerworkshopms
+
+    dockerComposeFile: 'docker-compose.yml'
+
+    dockerComposeFileArgs: 'DOCKER_REGISTRY=ordinadockerworkshopms'
+
+    action: 'Build services'
+
+    includeLatestTag: true
+
+
+- task: DockerCompose@0
+
+  displayName: 'Push services'
+
+  inputs:
+    containerregistrytype: 'Container Registry'
+
+    dockerRegistryEndpoint: ordinadockerworkshopms
+
+    dockerComposeFile: 'docker-compose.yml'
+
+    dockerComposeFileArgs: 'DOCKER_REGISTRY=ordinadockerworkshopms'
+
+    action: 'Push services'
+
+    includeLatestTag: true
+
